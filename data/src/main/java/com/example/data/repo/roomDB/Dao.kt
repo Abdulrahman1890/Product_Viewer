@@ -16,8 +16,4 @@ interface Dao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addProduct(products: List<ProductEntity>)
 
-
-    //get product information page
-    @Query("SELECT * FROM products WHERE id = :id")
-    fun getProductInfo(id: String): List<ProductEntity>
 }
