@@ -13,20 +13,70 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_8sdp"
         tools:context=".home.HomeFragment">
+
+        <ImageView
+            android:id="@+id/route"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/route"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:boxCornerRadiusBottomEnd="@dimen/_32sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_32sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_32sdp"
+            app:boxCornerRadiusTopStart="@dimen/_32sdp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintHeight_max="@dimen/_60sdp"
+            app:layout_constraintStart_toStartOf="@+id/route"
+            app:layout_constraintTop_toBottomOf="@+id/route"
+            app:startIconDrawable="@drawable/search"
+            app:startIconTint="@color/primary_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_view_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/what_do_you_search_for"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/cart"
+            app:layout_constraintBottom_toBottomOf="@+id/search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/search"
+            app:layout_constraintTop_toTopOf="@+id/search" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productList"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:listData="@{viewModel.product}"
+            android:layout_marginTop="16dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search"
+            app:listData="@{viewModel.product}"
             app:spanCount="2"
             tools:listitem="@layout/card_product" />
 
