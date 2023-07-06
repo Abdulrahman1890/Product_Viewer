@@ -18,4 +18,5 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     val product = repo.product
+
 }

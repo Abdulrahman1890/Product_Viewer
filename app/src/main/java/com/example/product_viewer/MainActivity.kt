@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val navHostFragment =

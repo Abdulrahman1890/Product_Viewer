@@ -1,5 +1,6 @@
 package com.example.product_viewer.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -15,11 +16,8 @@ class HomeAdapter(private val products: MutableList<ProductEntity>) :
         fun bind(product: ProductEntity) {
 
             binding.product = product
+            binding.productPrice.text = "EGP "+(((100 - product.discountPercentage) * product.price)/100).toInt()
 
-            binding.root.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(product.id)
-                binding.root.findNavController().navigate(action)
-            }
         }
 
     }
