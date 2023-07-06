@@ -6,7 +6,7 @@ import com.example.data.remote.Api
 import com.example.data.repo.roomDB.ProductDataBase
 import com.example.data.repo.roomDB.entity.ProductEntity
 import com.example.data.repo.roomDB.entity.asDatabaseModel
-import com.example.domain.entity.Product
+import com.example.domain.entity.ProductX
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -16,11 +16,7 @@ class RepoImpl(private val database: ProductDataBase) {
         try {
             withContext(Dispatchers.IO) {
                 val productResponse = Api.retrofitService.getProducts()
-                val productlist = mutableListOf<Product>()
-                for (productResponseItem in productResponse) {
-                    productlist.add(productResponseItem.Product)
-                }
-                database.productDao.addProduct(productlist.asDatabaseModel())
+                database.productDao.addProduct(productResponse.products.asDatabaseModel())
             }
         } catch (e: Exception) {
             Log.e("Internet", "Please open the Internet")
@@ -29,6 +25,7 @@ class RepoImpl(private val database: ProductDataBase) {
 
     }
 
-    val product: LiveData<List<ProductEntity>> = database.productDao.getProducts()
+     val product = database.productDao.getProducts()
+
 
 }
