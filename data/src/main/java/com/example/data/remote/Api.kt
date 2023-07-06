@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 //base url of website
 private const val BASE_URL =
-    "http://www.nweave.com/wp-content/uploads/2012/09/"
+    "https://dummyjson.com/"
 
 //moshi build which we will use to convert json to object kotlin
 private val moshi = Moshi.Builder()
